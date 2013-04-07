@@ -29,7 +29,7 @@ zjdict 命令行字典
 
 # snapshot 截图#
 ![alt=run运行](zjdict_run.png)
-![alt="translate翻译] (zjdict_translate.png)
+![alt=translate翻译](zjdict_translate.png)
 ![alt=search 查找](zjdict_search.png)
 ![alt=search mode查找模式](zjdict_search_mode.png)
 
