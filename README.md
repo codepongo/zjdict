@@ -34,14 +34,14 @@ zjdict 命令行字典
 ![alt=search mode查找模式](zjdict_search_mode.png)
 
 # command 命令#
+	
+* **,save** save to 'new word' file保存至生词本
 
-	* **,save** save to 'new word' file保存至生词本
+* **,search __regular__ ** 查找
 
-	* **,search __regular__ ** 查找
+* **,search** search mode 查找模式
 
-	* **,search** search mode 查找模式
-
-	* **,quit** or **,exit** exit 退出
+* **,quit** or **,exit** exit 退出
 
 # develop 开发#
 * source code 源代码
