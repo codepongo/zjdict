@@ -37,7 +37,7 @@ zjdict 命令行字典
 	
 * **,save** save to 'new word' file保存至生词本
 
-* **,search __regular__ ** 查找
+* **,search [regular] ** 查找
 
 * **,search** search mode 查找模式
 
