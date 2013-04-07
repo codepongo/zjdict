@@ -16,7 +16,7 @@ zjdict 命令行字典
 	you can translate word by local _startdict_ dictionary 
 	本地使用星际译王词典
 
-* Translate on line. 在线翻译
+* translate on line. 在线翻译
 	support baidu online translate and youdao online translate.
 	支持百度词典，有道词典在线翻译
 
@@ -28,19 +28,20 @@ zjdict 命令行字典
 	regular expression 支持正则表达式
 
 # snapshot 截图#
-[!alt=run运行](zjdict_run.png)
-[!alt="translate翻译] (zjdict_translate.png)
-[!alt=search 查找](zjdict_search.png)
-[!alt=search mode查找模式](zjdict_search_mode.png)
+![alt=run运行](zjdict_run.png)
+![alt="translate翻译] (zjdict_translate.png)
+![alt=search 查找](zjdict_search.png)
+![alt=search mode查找模式](zjdict_search_mode.png)
 
 # command 命令#
-	**,save** save to 'new word' file保存至生词本
 
-	**,search __regular__ ** 查找
+	* **,save** save to 'new word' file保存至生词本
 
-	**,search** search mode 查找模式
+	* **,search __regular__ ** 查找
 
-	**,quit** or **,exit** exit 退出
+	* **,search** search mode 查找模式
+
+	* **,quit** or **,exit** exit 退出
 
 # develop 开发#
 * source code 源代码
