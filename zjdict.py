@@ -22,23 +22,26 @@ class zjdictmod(object):
             path = 'newword.txt'
         return path
     def appendDicts(self):
-        self._dicts.append(\
-                pystardict.Dictionary(os.path.join(self._dicts_dir, \
-                    'stardict-cedict-gb-2.4.2', \
-                    'cedict-gb')))
-        self._dicts.append(
-                pystardict.Dictionary(os.path.join(self._dicts_dir, \
-                        'stardict-kdic-computer-gb-2.4.2', \
-                        'kdic-computer-gb')))
-        if 'linux2' != sys.platform:
-            self._dicts.append(
-                    pystardict.Dictionary(os.path.join(self._dicts_dir, \
-                            'stardict-langdao-ce-gb-2.4.2', \
-                            'langdao-ce-gb')))
+        try:
             self._dicts.append(\
                     pystardict.Dictionary(os.path.join(self._dicts_dir, \
-                            'stardict-langdao-ec-gb-2.4.2', \
-                            'langdao-ec-gb')))
+                        'stardict-cedict-gb-2.4.2', \
+                        'cedict-gb')))
+            self._dicts.append(
+                    pystardict.Dictionary(os.path.join(self._dicts_dir, \
+                            'stardict-kdic-computer-gb-2.4.2', \
+                            'kdic-computer-gb')))
+            if 'linux2' != sys.platform:
+                self._dicts.append(
+                        pystardict.Dictionary(os.path.join(self._dicts_dir, \
+                                'stardict-langdao-ce-gb-2.4.2', \
+                                'langdao-ce-gb')))
+                self._dicts.append(\
+                        pystardict.Dictionary(os.path.join(self._dicts_dir, \
+                                'stardict-langdao-ec-gb-2.4.2', \
+                                'langdao-ec-gb')))
+        except:
+            pass
     def lsdict(self):
         pass
     def words(self):
