@@ -1,4 +1,4 @@
-"""this is file copy from python 2.7.4
+"""clone from python 2.7.4 and fix reading gzip files with an extra field. [#17666]"""
 """Functions that read and write gzipped files.
 
 The user of the file doesn't have to worry about the compression,
