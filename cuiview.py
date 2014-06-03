@@ -98,12 +98,17 @@ if '__main__' == __name__:
                 else:
                     print 'translate by internet...'
                     try:
+                        values = ''
                         import baidudict
-                        t = baidudict.translateByBaiDu(source)
-                        if t:
-                            print t.decode('utf-8')
+                        baidu_value = baidudict.translateByBaiDu(source)
+                        values = baidu_value
+                        if baidu_value:
+                            print baidu_value.decode('utf-8')
                         import youdaodict
-                        print youdaodict.translateByYouDao(source)
+                        youdao_value = youdaodict.translateByYouDao(source)
+                        print youdao_value
+                        values += youdao_value.encode('utf-8')
+                        mod.value(values)
                     except:
                         print '[exception happens]'
     else:

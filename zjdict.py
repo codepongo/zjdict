@@ -70,5 +70,7 @@ class zjdictmod(object):
                 if m is not None:
                     cache.append(str(key))
         return cache
+    def value(self, v):
+        self._values = v
 if '__main__' == __name__:
     pass
