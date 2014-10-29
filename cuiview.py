@@ -64,6 +64,8 @@ if '__main__' == __name__:
                     break
                 elif ',save' == source:
                     mod.save(fname)
+                elif ',sound' == source[:len(',search')]:
+                    mod.sound()
                 elif ',search' == source[:len(',search')]:
                     search_once = False
                     if len(source) > len(',search'):
