@@ -65,7 +65,8 @@ if '__main__' == __name__:
                 elif ',save' == source:
                     mod.save(fname)
                 elif ',sound' == source[:len(',search')]:
-                    mod.sound()
+                    if not mod.sound():
+                        print '[exception]'
                 elif ',search' == source[:len(',search')]:
                     search_once = False
                     if len(source) > len(',search'):

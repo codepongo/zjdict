@@ -14,7 +14,7 @@ def download(url):
 #        urllib2.install_opener(opener)
 #    except ImportError, e:
 #        pass
-    mp3_path = os.path.join(sound_dir, w + '.mp3')
+    mp3_path = os.path.join(sound_dir, url + '.mp3')
     try:
         if not os.path.isfile(mp3_path):
             conn = urllib2.urlopen(url)
@@ -44,7 +44,8 @@ def sound(w):
         f = download(url)
         if f != '':
             play(f)
-            return
+            return True
+    return False
 
 
 if __name__ == '__main__':

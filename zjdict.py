@@ -73,7 +73,7 @@ class zjdictmod(object):
     def value(self, v):
         self._values = v
     def sound(self):
-        import shanbaysound
-        shanbaysound.soundByShanbay(self._key)
+        import sound
+        return sound.sound(self._key)
 if '__main__' == __name__:
     pass
