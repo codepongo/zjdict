@@ -38,3 +38,4 @@ nosetests.xml
 
 *.swp
 sound/
+proxy.py
