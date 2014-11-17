@@ -5,25 +5,24 @@ import os
 import mp3play
 import socket
 sound_dir = 'sound'
-def download(url):
-#    try:
-#        import proxy
-#        url = 'http://%s:%s' % (proxy.ip, proxy.port)
-#        proxy = urllib2.ProxyHandler({'http:':url})
-#        opener = urllib2.build_opener(proxy)
-#        urllib2.install_opener(opener)
-#    except ImportError, e:
-#        pass
-    mp3_path = os.path.join(sound_dir, url + '.mp3')
+def download(url, path):
     try:
-        if not os.path.isfile(mp3_path):
+        import proxy
+        proxy_url = 'http://%s:%s' % (proxy.ip, proxy.port)
+        proxy = urllib2.ProxyHandler({'http':proxy_url})
+        opener = urllib2.build_opener(proxy)
+        urllib2.install_opener(opener)
+    except ImportError, e:
+        pass
+    try:
+        if not os.path.isfile(path):
             conn = urllib2.urlopen(url)
-            with open(os.path.join(sound_dir, w + '.mp3'), 'wb') as f:
+            with open(path, 'wb') as f:
                 f.write(conn.read())
-        return mp3_path
+        return True
     except socket.error, e:
         if e.errno == 10054:
-            return ''
+            return False
         raise e
 def play(f):
     clip = mp3play.load(f)
@@ -40,10 +39,11 @@ def sound(w):
         'http://media.shanbay.com/audio/us/%s.mp3' % (w),
         'http://media.engkoo.com:8129/en-us/%s.mp3' % (w),
     ]
+    w += '.mp3'
+    path = os.path.join(sound_dir, w)
     for url in urls:
-        f = download(url)
-        if f != '':
-            play(f)
+        if download(url, path):
+            play(path)
             return True
     return False
 
@@ -55,10 +55,13 @@ if __name__ == '__main__':
         'http://media.shanbay.com/audio/us/%s.mp3' % (w),
         'http://media.engkoo.com:8129/en-us/%s.mp3' % (w),
     ]
+    path = w +'.mp3'
     for url in urls:
-        f = download(url)
-        if f != '':
-            print url, '->', f
-            play(f)
+        if os.path.isfile(path):
+            os.remove(path)
+        if download(url, path):
+            print url, '->', path 
+            play(path)
+            os.remove(path)
         else:
             print 'fail to download ', url
