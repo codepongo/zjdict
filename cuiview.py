@@ -67,12 +67,14 @@ if '__main__' == __name__:
                 elif ',sound' == source[:len(',search')]:
                     if not mod.sound():
                         print '[exception]'
-                elif ',search' == source[:len(',search')]:
+                elif ',search' == source[:len(',search')] or ',' == source[:len(',')]:
                     search_once = False
-                    if len(source) > len(',search'):
+                    if source[:2] == ', ':
+                        search_once = True
+                        grep = source.replace(', ', '')
+                    elif len(source) > len(',search'):
                         search_once = True
                         grep = source.replace(',search ', '')
-                  
                     while True:
                         if not search_once:
                             grep = raw_input('?>')
