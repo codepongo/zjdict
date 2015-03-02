@@ -75,5 +75,8 @@ class zjdictmod(object):
     def sound(self):
         import sound
         return sound.sound(self._key)
+    def sound(self, source):
+        import sound
+        return sound.sound(source)
 if '__main__' == __name__:
     pass

@@ -25,12 +25,15 @@ def download(url, path):
             return False
         raise e
 def play(f):
-    clip = mp3play.load(f)
-    clip.play() 
-    # Let it play for up to 30 seconds, then stop it.
-    import time
-    time.sleep(clip.seconds())
-    clip.stop()
+    try:
+        clip = mp3play.load(f)
+        clip.play()
+        # Let it play for up to 30 seconds, then stop it.
+        import time
+        time.sleep(clip.seconds())
+        clip.stop()
+    except:
+        pass
 
 def sound(w):
     if not os.path.exists(sound_dir):
