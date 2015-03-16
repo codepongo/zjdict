@@ -18,9 +18,12 @@ class zjdictmod(object):
         try:
             cfg.read('zjdict.ini')
             path = cfg.get('newword', 'path')
+            cfg.read('zjdict.ini')
+            auto = cfg.get('online', 'auto').lower() == str(True).lower()
         except:
             path = 'newword.txt'
-        return path
+            auto = True
+        return path, auto
     def appendDicts(self):
         try:
             self._dicts.append(\

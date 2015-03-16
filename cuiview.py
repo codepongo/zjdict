@@ -51,8 +51,9 @@ def show_record(destination):
 
 if '__main__' == __name__:
     mod = zjdict.zjdictmod()
-    fname = mod.loadCfg()
-    print 'newword=%s' %(fname)
+    fname, auto = mod.loadCfg()
+    print 'newword=%s' % (fname)
+    print 'translate_online=%s' % (str(auto))
     loading(loadDicts, (mod,))
     if 1 == len(sys.argv):
         while True:
@@ -101,14 +102,21 @@ if '__main__' == __name__:
                 if destination != '':
                     show_record(destination)
                 else:
-                    print 'translate by internet...'
+                    if auto == False:
+                        break
+                    print 'press any key to translate by internet...(ESC to skip)'
+                    k = getch.getch()
+                    if k == '\x1b':
+                        continue
                     try:
+                        print 'translate by baidu...'
                         values = ''
                         import baidudict
                         baidu_value = baidudict.translateByBaiDu(source)
                         values = baidu_value
                         if baidu_value:
                             print baidu_value.decode('utf-8')
+                        print 'translate by youdao...'
                         import youdaodict
                         youdao_value = youdaodict.translateByYouDao(source)
                         print youdao_value
