@@ -103,7 +103,7 @@ if '__main__' == __name__:
                     show_record(destination)
                 else:
                     if auto == False:
-                        break
+                        continue
                     print 'press any key to translate by internet...(ESC to skip)'
                     k = getch.getch()
                     if k == '\x1b':
