@@ -76,9 +76,8 @@ class zjdictmod(object):
     def value(self, v):
         self._values = v
     def sound(self):
-        import sound
-        return sound.sound(self._key)
-    def sound(self, source):
+        return self.sound_with_word(self._key)
+    def sound_with_word(self, source):
         import sound
         return sound.sound(source)
 if '__main__' == __name__:
