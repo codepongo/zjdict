@@ -20,10 +20,12 @@ class zjdictmod(object):
             path = cfg.get('newword', 'path')
             cfg.read('zjdict.ini')
             auto = cfg.get('online', 'auto').lower() == str(True).lower()
+            phonetic_show = cfg.get('phonetic', 'show').lower() == str(True).lower()
         except:
             path = 'newword.txt'
             auto = True
-        return path, auto
+            phonetic_show = True
+        return path, auto, phonetic_show
     def appendDicts(self):
         try:
             self._dicts.append(\
@@ -75,6 +77,12 @@ class zjdictmod(object):
         return cache
     def value(self, v):
         self._values = v
+    def show_phonetic(self):
+        try:
+            import phonetic_with_bing
+            print '>>>[%s]' % (phonetic_with_bing.get_from_bing(self._key)['us'])
+        except:
+            pass
     def sound(self):
         return self.sound_with_word(self._key)
     def sound_with_word(self, source):

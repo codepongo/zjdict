@@ -3,6 +3,7 @@ import sys
 import threading
 import time
 import getch
+import phonetic
 class CUIView:
     pass
 
@@ -44,16 +45,21 @@ def show_record(destination):
                 try:
                     print(s.decode('utf-8').encode('gbk'))
                 except:
-                    continue
-
+                    try:
+                        print(phonetic.phonetic_readability(s, phonetic.tbl))
+                    except:
+                        print(repr(s))
+                continue
+        
     else:
         print(destination)
 
 if '__main__' == __name__:
     mod = zjdict.zjdictmod()
-    fname, auto = mod.loadCfg()
+    fname, auto, phonetic_show = mod.loadCfg()
     print 'newword=%s' % (fname)
     print 'translate_online=%s' % (str(auto))
+    print 'phonetic_show=%s' % (str(phonetic_show))
     loading(loadDicts, (mod,))
     if 1 == len(sys.argv):
         while True:
@@ -66,6 +72,8 @@ if '__main__' == __name__:
                 elif ',save' == source:
                     mod.save(fname)
                 elif ',sound' == source[:len(',search')]:
+                    if phonetic_show:
+                        mod.show_phonetic()
                     if not mod.sound():
                         print '[exception]'
                 elif ',search' == source[:len(',search')] or ',' == source[:len(',')]:
