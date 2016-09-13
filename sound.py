@@ -14,6 +14,8 @@ def download(url, path):
         urllib2.install_opener(opener)
     except ImportError, e:
         pass
+    except AttributeError, e:
+        pass
     try:
         if not os.path.isfile(path):
             conn = urllib2.urlopen(url)
